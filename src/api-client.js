@@ -11,7 +11,7 @@ const {
 class MuffinsCorp {
   constructor(config = {}) {
     this.apiKey = config.apiKey;
-    this.baseURL = config.baseURL || "http://localhost:3000/api/public"; // Default base URL
+    this.baseURL = config.baseURL || "https://chat.muffinscorp.com/api/public"; // Default base URL
     this.client = axios.create({
       baseURL: this.baseURL,
       headers: {
