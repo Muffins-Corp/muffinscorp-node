@@ -1,4 +1,4 @@
-// Example usage code for the MyAI client library
+// Example usage code for the MuffinsCorp client library
 
 const { MuffinsCorp } = require("./src/api-client");
 
@@ -124,7 +124,7 @@ async function getSubscriptionPlans() {
 
 // Run the example functions
 async function runExamples() {
-  console.log("==== MyAI API Client Examples ====\n");
+  console.log("==== MuffinsCorp API Client Examples ====\n");
 
   console.log("1. Fetching available models...");
   await getAvailableModels();

@@ -1,108 +1,79 @@
-# MyAI JavaScript Client Library
+# Muffins Corp. JavaScript Client Library
 
-A Node.js client library for interacting with the MyAI API, designed with a similar structure to the OpenAI Node.js library.
+Uma biblioteca cliente Node.js para interagir com a API de Inteligencia Artificial da Muffins Corp, com estrutura similar à biblioteca da OpenAI para Node.js.
 
-## Installation
+## Instalação
 
 ```bash
-npm install myai
+npm install muffinscorp
 ```
 
-## Usage
+## Uso Básico
 
 ```javascript
-const { MyAI } = require("myai");
+const { MuffinsCorp } = require("./src/api-client.js");
 
-// Initialize with your API key
-const myai = new MyAI({
-  apiKey: "your-api-key",
-  // Optional: specify a custom base URL
+// Inicialização com API key
+const myai = new MuffinsCorp({
+  apiKey: "sua-api-key",
+  // Opcional: URL base customizada
   // baseURL: 'https://custom-api-endpoint.com'
 });
 
-// Example: Get available models
+// Exemplo: Listar modelos
 async function getModels() {
   const models = await myai.models.list();
   console.log(models);
 }
 
-// Example: Chat completion
+// Exemplo: Completar chat
 async function createChatCompletion() {
   const completion = await myai.chat.create({
     messages: [
-      { role: "system", content: "You are a helpful assistant." },
-      { role: "user", content: "Hello, world!" },
+      { role: "system", content: "Você é um assistente útil." },
+      { role: "user", content: "Olá, mundo!" },
     ],
     model: "chat-model-small",
-    stream: false, // Set to true for streaming responses
+    stream: false, // Definir como true para respostas em stream
   });
 
   console.log(completion);
 }
 
-// Example: Get credit balance
+// Exemplo: Ver saldo de créditos
 async function getCredits() {
   const balance = await myai.credits.getBalance();
   console.log(balance);
 }
-
-// Example: List subscription plans
-async function getSubscriptionPlans() {
-  const plans = await myai.subscriptions.list();
-  console.log(plans);
-}
 ```
 
-## API Reference
+## Referência da API
 
-### Configuration
+### Configuração
 
-When initializing the `MyAI` class, you can provide the following options:
+Opções ao inicializar `MuffinsCorp`:
 
-- `apiKey` (required): Your MyAI API key
-- `baseURL` (optional): Custom API endpoint URL
+- `apiKey` (obrigatório) - Sua chave da API MuffinsCorp
+- `baseURL` (opcional) - Endpoint customizado
 
-### Chat
+### Principais Métodos
 
-#### `myai.chat.create(options)`
+**Chat:**
 
-Creates a chat completion.
+- `myai.chat.create(options)` - Cria completação de chat
+  - `messages`: Array de mensagens com `role` e `content`
+  - `model`: Modelo a usar (default: "chat-model-small")
+  - `stream`: Habilitar streaming (default: true)
 
-Parameters:
+**Models:**
 
-- `messages` (required): Array of message objects with `role` and `content`
-- `model` (optional): Model ID to use (defaults to "chat-model-small")
-- `stream` (optional): Whether to stream the response (defaults to true)
+- `myai.models.list()` - Lista modelos disponíveis
 
-Returns a Promise resolving to the completion response.
+**Credits:**
 
-### Models
+- `myai.credits.getBalance()` - Retorna saldo de créditos
 
-#### `myai.models.list()`
-
-Lists all available models.
-
-Returns a Promise resolving to an array of model objects.
-
-### Subscriptions
-
-#### `myai.subscriptions.list()`
-
-Lists all available subscription plans.
-
-Returns a Promise resolving to an array of plan objects.
-
-### Credits
-
-#### `myai.credits.getBalance()`
-
-Gets the current credit balance for your account.
-
-Returns a Promise resolving to a balance object.
-
-## Error Handling
-
-The library will throw standardized errors with appropriate messages when API requests fail. You can catch these errors using standard try/catch blocks.
+## Tratamento de Erros
 
 ```javascript
 try {
@@ -110,19 +81,19 @@ try {
     messages: [{ role: "user", content: "Hello" }],
   });
 } catch (error) {
-  console.error("API request failed:", error.message);
+  console.error("Erro na API:", error.message);
 }
 ```
 
-## Streaming Responses
+## Streaming
 
-When using `stream: true` with chat completions, you'll receive a response that can be processed as a stream.
+Para respostas em streaming:
 
 ```javascript
 const stream = await myai.chat.create({
-  messages: [{ role: "user", content: "Tell me a story" }],
+  messages: [{ role: "user", content: "Conte uma história" }],
   stream: true,
 });
 
-// Handle stream processing based on your implementation
+// Processar o stream conforme necessário
 ```

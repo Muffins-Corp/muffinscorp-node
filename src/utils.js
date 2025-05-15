@@ -1,12 +1,12 @@
-// utils.js - Utility functions for the MyAI client library
+// utils.js - Utility functions for the MuffinsCorp client library
 
 /**
  * Custom error class for authentication errors
  */
 class AuthenticationError extends Error {
-  constructor(message, statusCode = 401, errorCode = 'AUTHENTICATION_ERROR') {
+  constructor(message, statusCode = 401, errorCode = "AUTHENTICATION_ERROR") {
     super(message);
-    this.name = 'AuthenticationError';
+    this.name = "AuthenticationError";
     this.statusCode = statusCode;
     this.errorCode = errorCode;
   }
@@ -16,9 +16,14 @@ class AuthenticationError extends Error {
  * Custom error class for credit-related errors
  */
 class CreditError extends Error {
-  constructor(message, statusCode = 402, errorCode = 'CREDIT_ERROR', creditsRemaining = 0) {
+  constructor(
+    message,
+    statusCode = 402,
+    errorCode = "CREDIT_ERROR",
+    creditsRemaining = 0
+  ) {
     super(message);
-    this.name = 'CreditError';
+    this.name = "CreditError";
     this.statusCode = statusCode;
     this.errorCode = errorCode;
     this.creditsRemaining = creditsRemaining;
@@ -49,21 +54,25 @@ function parseStreamChunk(chunk) {
  * @returns {Array} - Formatted message array
  */
 function formatMessages(messages) {
-  return messages.map(msg => {
+  return messages.map((msg) => {
     // Ensure each message has the required role and content properties
     if (!msg.role || !msg.content) {
-      throw new Error('Each message must have a role and content');
+      throw new Error("Each message must have a role and content");
     }
-    
+
     // Ensure role is one of the expected values
-    const allowedRoles = ['system', 'user', 'assistant'];
+    const allowedRoles = ["system", "user", "assistant"];
     if (!allowedRoles.includes(msg.role)) {
-      throw new Error(`Invalid message role: ${msg.role}. Must be one of: ${allowedRoles.join(', ')}`);
+      throw new Error(
+        `Invalid message role: ${msg.role}. Must be one of: ${allowedRoles.join(
+          ", "
+        )}`
+      );
     }
-    
+
     return {
       role: msg.role,
-      content: msg.content
+      content: msg.content,
     };
   });
 }
@@ -73,9 +82,9 @@ function formatMessages(messages) {
  * @returns {string} - A random UUID
  */
 function generateUUID() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0, 
-          v = c === 'x' ? r : (r & 0x3 | 0x8);
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c === "x" ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
@@ -85,5 +94,5 @@ module.exports = {
   CreditError,
   parseStreamChunk,
   formatMessages,
-  generateUUID
+  generateUUID,
 };

@@ -1,4 +1,4 @@
-// index.js - Main entry point for the MyAI package
+// index.js - Main entry point for the MuffinsCorp package
 
 // Re-export the main classes and utilities
 const { MuffinsCorp } = require("./src/api-client");
