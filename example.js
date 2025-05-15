@@ -3,14 +3,14 @@
 const { MuffinsCorp } = require("./src/api-client");
 
 // Initialize the client
-const myai = new MuffinsCorp({
-  apiKey: "dac196a6039e99d4d0f8a0da8a915becd9a7e97cb4d2afbe268676a4fcb58fb3",
+const muffinsai = new MuffinsCorp({
+  apiKey: "api-key-here",
 });
 
 // Example function to demonstrate getting models
 async function getAvailableModels() {
   try {
-    const models = await myai.models.list();
+    const models = await muffinsai.models.list();
     console.log("Available models:");
     console.log(models);
   } catch (error) {
@@ -21,7 +21,7 @@ async function getAvailableModels() {
 // Example function to demonstrate chat completion
 async function createChatCompletion() {
   try {
-    const response = await myai.chat.create({
+    const response = await muffinsai.chat.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: "What is the capital of France?" },
@@ -40,7 +40,7 @@ async function createChatCompletion() {
 // Example function to demonstrate streaming chat completion
 async function createStreamingChatCompletion() {
   try {
-    const stream = await myai.chat.create({
+    const stream = await muffinsai.chat.create({
       messages: [
         { role: "system", content: "You are a helpful assistant." },
         { role: "user", content: "Write a short poem about programming." },
@@ -103,7 +103,7 @@ async function createStreamingChatCompletion() {
 // Example function to demonstrate getting credit balance
 async function getCredits() {
   try {
-    const balance = await myai.credits.getBalance();
+    const balance = await muffinsai.credits.getBalance();
     console.log("Current credit balance:");
     console.log(balance);
   } catch (error) {
@@ -114,7 +114,7 @@ async function getCredits() {
 // Example function to demonstrate listing subscription plans
 async function getSubscriptionPlans() {
   try {
-    const plans = await myai.subscriptions.list();
+    const plans = await muffinsai.subscriptions.list();
     console.log("Available subscription plans:");
     console.log(plans);
   } catch (error) {

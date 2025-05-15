@@ -60,18 +60,18 @@ Opções ao inicializar `MuffinsCorp`:
 
 **Chat:**
 
-- `myai.chat.create(options)` - Cria completação de chat
+- `muffinsai.chat.create(options)` - Cria completação de chat
   - `messages`: Array de mensagens com `role` e `content`
   - `model`: Modelo a usar (default: "chat-model-small")
   - `stream`: Habilitar streaming (default: true)
 
 **Models:**
 
-- `myai.models.list()` - Lista modelos disponíveis
+- `muffinsai.models.list()` - Lista modelos disponíveis
 
 **Credits:**
 
-- `myai.credits.getBalance()` - Retorna saldo de créditos
+- `muffinsai.credits.getBalance()` - Retorna saldo de créditos
 
 ## Tratamento de Erros
 

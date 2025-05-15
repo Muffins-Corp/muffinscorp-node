@@ -1,4 +1,4 @@
-// myai.js - Client library for MuffinsCorp API
+// muffinsai.js - Client library for MuffinsCorp API
 const axios = require("axios");
 const {
   AuthenticationError,
