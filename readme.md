@@ -1,6 +1,6 @@
 # Muffins Corp. JavaScript Client Library
 
-Uma biblioteca cliente Node.js para interagir com a API de Inteligencia Artificial da Muffins Corp, com estrutura similar à biblioteca da OpenAI para Node.js.
+Uma biblioteca cliente Node.js para interagir com a API de Inteligencia Artificial da Muffins Corp (Muffins AI).
 
 ## Instalação
 
@@ -14,7 +14,7 @@ npm install muffinscorp
 const { MuffinsCorp } = require("./src/api-client.js");
 
 // Inicialização com API key
-const myai = new MuffinsCorp({
+const muffinsai = new MuffinsCorp({
   apiKey: "sua-api-key",
   // Opcional: URL base customizada
   // baseURL: 'https://custom-api-endpoint.com'
@@ -22,13 +22,13 @@ const myai = new MuffinsCorp({
 
 // Exemplo: Listar modelos
 async function getModels() {
-  const models = await myai.models.list();
+  const models = await muffinsai.models.list();
   console.log(models);
 }
 
 // Exemplo: Completar chat
 async function createChatCompletion() {
-  const completion = await myai.chat.create({
+  const completion = await muffinsai.chat.create({
     messages: [
       { role: "system", content: "Você é um assistente útil." },
       { role: "user", content: "Olá, mundo!" },
@@ -42,7 +42,7 @@ async function createChatCompletion() {
 
 // Exemplo: Ver saldo de créditos
 async function getCredits() {
-  const balance = await myai.credits.getBalance();
+  const balance = await muffinsai.credits.getBalance();
   console.log(balance);
 }
 ```
@@ -53,7 +53,7 @@ async function getCredits() {
 
 Opções ao inicializar `MuffinsCorp`:
 
-- `apiKey` (obrigatório) - Sua chave da API MuffinsCorp
+- `apiKey` (obrigatório) - Sua chave da API MuffinsCorp ou Muffins AI
 - `baseURL` (opcional) - Endpoint customizado
 
 ### Principais Métodos
@@ -77,7 +77,7 @@ Opções ao inicializar `MuffinsCorp`:
 
 ```javascript
 try {
-  await myai.chat.create({
+  await muffinsai.chat.create({
     messages: [{ role: "user", content: "Hello" }],
   });
 } catch (error) {
@@ -90,7 +90,7 @@ try {
 Para respostas em streaming:
 
 ```javascript
-const stream = await myai.chat.create({
+const stream = await muffinsai.chat.create({
   messages: [{ role: "user", content: "Conte uma história" }],
   stream: true,
 });
