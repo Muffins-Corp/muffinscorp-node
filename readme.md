@@ -11,7 +11,7 @@ npm install muffinscorp
 ## Uso Básico
 
 ```javascript
-const { MuffinsCorp } = require("./src/api-client.js");
+const { MuffinsCorp } = require("muffinscorp");
 
 // Inicialização com API key
 const muffinsai = new MuffinsCorp({

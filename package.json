@@ -1,5 +1,5 @@
 {
-  "name": "muffinscorp-node",
+  "name": "muffinscorp",
   "version": "1.0.0",
   "description": "Node.js client library for Muffins Corp AI API",
   "main": "index.js",
